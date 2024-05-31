@@ -1,0 +1,12 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.todo{
+  background-image: url("./assets/Todolist.png");
+  background-size: cover;
+}
+.custom-table-bg {
+  background-color: #272626; /* Replace with your desired color */
+}
