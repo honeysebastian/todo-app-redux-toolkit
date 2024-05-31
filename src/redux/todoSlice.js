@@ -1,20 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
+const loadTodos = () => {
+  const serializedTodos = localStorage.getItem('todos');
+  if (serializedTodos) {
+    return JSON.parse(serializedTodos);
+  }
+  return [];
+};
+
+const saveTodos = (todos) => {
+  localStorage.setItem('todos', JSON.stringify(todos));
+};
+
 const todoSlice = createSlice({
   name: 'todos',
-  initialState: [],
+  initialState: loadTodos(),
   reducers: {
     addTodo: (state, action) => {
-      state.push({ id: Date.now(), text: action.payload, completed: false });
+      const newState = [...state, { id: Date.now(), text: action.payload, completed: false }];
+      saveTodos(newState);
+      return newState;
     },
     toggleTodo: (state, action) => {
-      const todo = state.find(todo => todo.id === action.payload);
-      if (todo) {
-        todo.completed = !todo.completed;
-      }
+      const newState = state.map(todo =>
+        todo.id === action.payload ? { ...todo, completed: !todo.completed } : todo
+      );
+      saveTodos(newState);
+      return newState;
     },
     deleteTodo: (state, action) => {
-      return state.filter(todo => todo.id !== action.payload);
+      const newState = state.filter(todo => todo.id !== action.payload);
+      saveTodos(newState);
+      return newState;
     }
   }
 });

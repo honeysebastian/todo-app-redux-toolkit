@@ -20,11 +20,11 @@ function App() {
   return (
     <>
       <div style={{ width: "100%", height: '100vh' }} className="todo d-flex justify-content-center align-items-center">
-        <div style={{ width: '700px', height: 'auto' }} className="todo-app bg-dark shadow rounded">
+        <div style={{ width: '600px', height: 'auto' }} className="todo-app bg-dark shadow rounded">
           <div style={{ backgroundColor: '#00b2a7' }} className='text-dark p-3 rounded shadow mb-4'> <h1 className='text-center'><i className="fa-solid fa-list-ul me-4"></i>My Todo List</h1></div>
           <div className="input-todo d-flex justify-content-around align-items-center mb-3">
-            <input className='rounded shadow w-75 p-2' type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder='Add todo....' />
-            <button onClick={handleAddTodo} style={{ backgroundColor: '#00b2a7' }} className='btn btn-success p-2'>Submit</button>
+            <input className='rounded shadow w-50 p-2' type="text" value={text} onChange={(e) => setText(e.target.value)} placeholder='Add todo....' />
+            <button onClick={handleAddTodo} style={{ backgroundColor: '#00b2a7' }} className='btn btn-success p-2'>Add</button>
           </div>
           <h5 className='text-light ms-5'>Total Completed Items : {completedCount} </h5>
           <div  className="todo-list p-5 shadow">
